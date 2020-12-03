@@ -32,9 +32,9 @@ public class FileController {
 		return this.fileService.getUserFiles(auth.getName());
 	}
 	
-	@GetMapping("/downloadfile/{fileid}")
-	public ResponseEntity<byte[]> getFile(@PathVariable String fileid) {
-		File newFile = this.fileService.getFile(Integer.valueOf(fileid));
+	@GetMapping("/downloadfile/{id}")
+	public ResponseEntity<byte[]> getFile(@PathVariable String id) {
+		File newFile = this.fileService.getFile(Integer.valueOf(id));
 		return ResponseEntity.ok()
 		        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + newFile.getFilename() + "\"")
 		        .body(newFile.getFiledata());
